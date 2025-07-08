@@ -44,4 +44,15 @@
             </div>
         </div>
     </section>
+
+    <!-- video section -->
+    <section id="conference-video" class="video-section py-5">
+        <div class="container" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="ratio ratio-16x9 rounded shadow-sm overflow-hidden">
+                <iframe src="https://www.youtube.com/embed/grRMXCDlYQE?si=6UXTgEK4LoeZa9UZ" title="ICoFA Conference Video"
+                    allowfullscreen loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
 @endsection
