@@ -2,107 +2,97 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description"
-        content="The 8th ICoFA 2025 is an international conference on Food and Agriculture hosted by Politeknik Negeri Jember. Join global experts in agriculture, food, energy, and animal sciences.">
-    <title>8th ICoFA 2025 - International Conference on Food and Agriculture</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>8th International Conference on Food and Agriculture 2025</title>
+    <meta content="8th International Conference on Food and Agriculture 2025" name="description">
+    <meta content="icofa-2025" name="keywords">
+    <meta name="theme-color" content="#589981">
+    {{-- @if (request()->input('page') == '')
+        <meta property="og:title" content="{{ strip_tags($config['conference']->alias) }}">
+        <meta property="og:description" content="">
+        <meta property="og:image" content="{{ url(asset('assets/img/' . $config['conference']->logo_icon)) }}">
+        <meta property="og:url" content="{{ url('/') }}">
+    @else
+        <meta property="og:title" content="{{ strip_tags($page['title']) }}">
+        <meta property="og:description" content="This is content of Page Entitle {{ $page['title'] }}">
+        <meta property="og:image" content="{{ url(asset('assets/img/' . $config['conference']->logo_icon)) }}">
+        <meta property="og:url" content="{{ request()->fullUrl() }}">
+    @endif --}}
 
     <!-- Favicons -->
     <link rel="icon" href="{{ asset('assets/img/icofa_7th_icon.png') }}">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+    <link rel="apple-touch-icon" href="{{ asset('assets/img/icofa_7th_icon.png') }}">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Signika:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <!-- AOS CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+
+    <!-- Vendor CSS Files -->
+    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/timeline.css') }}" rel="stylesheet">
+
+    <!-- =======================================================
+ * Template Name: QuickStart
+ * Template URL: https://bootstrapmade.com/quickstart-bootstrap-startup-website-template/
+ * Updated: Jun 06 2024 with Bootstrap v5.3.3
+ * Author: BootstrapMade.com
+ * License: https://bootstrapmade.com/license/
+ ======================================================== -->
 </head>
 
-<body>
+<body class="index-page">
 
-    @include('landing.partials.navbar')
+    @include('landing.partials.header')
 
-    @yield('content')
+    <main class="main">
+
+        @yield('content')
+
+    </main>
 
     @include('landing.partials.footer')
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
+    <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+
+    <!-- Main JS File -->
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+
+    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/countdown/countdown.jquery.js') }}"></script>
     <script>
-        // Initialize AOS
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            AOS.init({
-                disable: true
-            });
-        } else {
-            AOS.init({
-                duration: 800,
-                once: true,
-                offset: 100,
-                easing: 'ease-out-cubic'
-            });
-        }
-
-        // Scroll navbar effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar-custom');
-            navbar.classList.toggle('scrolled', window.scrollY > 100);
+        $('#countdown').countdown({
+            year: 2025, // YYYY Format
+            month: 7, // 1-12
+            day: 10, // 1-31
+            hour: 10, // 24 hour format 0-23
+            minute: 0, // 0-59
+            second: 0, // 0-59
+            timezone: +7,
         });
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Auto-close navbar on mobile
-        document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
-            link.addEventListener('click', function() {
-                const navbarToggler = document.querySelector('.navbar-toggler');
-                if (navbarToggler && window.getComputedStyle(navbarToggler).display !== 'none') {
-                    navbarToggler.click();
-                }
-            });
-        });
-
-        // Countdown timer
-        const targetDate = new Date("July 12, 2025 10:00:00 GMT+0700").getTime();
-        const countdown = setInterval(() => {
-            const now = new Date().getTime();
-            const diff = targetDate - now;
-
-            if (diff <= 0) {
-                clearInterval(countdown);
-                ['days', 'hours', 'minutes', 'seconds'].forEach(id => {
-                    document.getElementById(id).innerText = "00";
-                });
-                return;
-            }
-
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerText = String(days).padStart(2, "0");
-            document.getElementById("hours").innerText = String(hours).padStart(2, "0");
-            document.getElementById("minutes").innerText = String(minutes).padStart(2, "0");
-            document.getElementById("seconds").innerText = String(seconds).padStart(2, "0");
-        }, 1000);
     </script>
-
 </body>
 
 </html>
