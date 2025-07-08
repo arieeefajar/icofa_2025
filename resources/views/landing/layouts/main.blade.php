@@ -33,6 +33,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
+        // Initialize AOS
         if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
             AOS.init({
                 disable: true
@@ -46,7 +47,7 @@
             });
         }
 
-        // Navbar scroll effect
+        // Scroll navbar effect
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar-custom');
             navbar.classList.toggle('scrolled', window.scrollY > 100);
@@ -75,7 +76,33 @@
                 }
             });
         });
+
+        // Countdown timer
+        const targetDate = new Date("July 12, 2025 10:00:00 GMT+0700").getTime();
+        const countdown = setInterval(() => {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                clearInterval(countdown);
+                ['days', 'hours', 'minutes', 'seconds'].forEach(id => {
+                    document.getElementById(id).innerText = "00";
+                });
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = String(days).padStart(2, "0");
+            document.getElementById("hours").innerText = String(hours).padStart(2, "0");
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, "0");
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, "0");
+        }, 1000);
     </script>
+
 </body>
 
 </html>
