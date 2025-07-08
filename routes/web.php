@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('landing.pages.home');
+Route::middleware('guest')->group(function () {
+    Route::controller(LandingController::class)->name('landing.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/presentation-schedule', 'presentationSchedule')->name('presentationSchedule');
+    });
 });
