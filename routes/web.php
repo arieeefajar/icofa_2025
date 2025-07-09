@@ -24,6 +24,7 @@ Route::middleware('guest')->group(function () {
     Route::controller(LandingController::class)->name('landing.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/presentation-schedule', 'presentationSchedule')->name('presentationSchedule');
+        Route::get('/download', 'download')->name('download');
     });
 });
 

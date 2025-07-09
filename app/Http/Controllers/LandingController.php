@@ -17,4 +17,9 @@ class LandingController extends Controller
         $presentationSchedule = Panel::with('sessions.papers')->get();
         return view('landing.pages.presentation-schedule', compact('presentationSchedule'));
     }
+
+    public function download()
+    {
+        return view('landing.pages.download');
+    }
 }
