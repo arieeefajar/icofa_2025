@@ -43,7 +43,7 @@
     />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="{{ asset('assets_admin/vendor/fonts/boxicons.css') }}" />
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="{{ asset('assets_admin/vendor/css/core.css') }}" class="template-customizer-core-css" />
@@ -143,7 +143,7 @@
     <!-- Vendors JS -->
 
     <!-- Main JS -->
-    <script src="{{ asset('assets_admin/vendor/js/main.js') }}"></script>
+    <script src="{{ asset('assets_admin/js/main.js') }}"></script>
 
     <!-- Page JS -->
 
