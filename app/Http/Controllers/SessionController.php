@@ -66,6 +66,28 @@ class SessionController extends Controller
         $endTime = Carbon::parse($request->end_time)->format('H:i');
         $startDiscussionTime = $request->start_discussion_time ? Carbon::parse($request->start_discussion_time)->format('H:i') : null;
         $endDiscussionTime = $request->end_discussion_time ? Carbon::parse($request->end_discussion_time)->format('H:i') : null;
+
+        if ($startTime >= $endTime) {
+            Alert::error('Error', 'Waktu mulai session harus sebelum waktu selesai.');
+            return back()->withErrors(['start_time' => 'Waktu mulai session harus sebelum waktu selesai.'])->withInput();
+        }
+
+        // Validasi 2: Waktu diskusi (jika ada) harus dalam rentang session
+        if ($startDiscussionTime && ($startDiscussionTime < $startTime || $startDiscussionTime > $endTime)) {
+            Alert::error('Error', 'Waktu mulai diskusi harus dalam rentang waktu session.');
+            return back()->withErrors(['start_discussion_time' => 'Waktu mulai diskusi harus dalam rentang waktu session.'])->withInput();
+        }
+
+        if ($endDiscussionTime && ($endDiscussionTime < $startTime || $endDiscussionTime > $endTime)) {
+            Alert::error('Error', 'Waktu selesai diskusi harus dalam rentang waktu session.');
+            return back()->withErrors(['end_discussion_time' => 'Waktu selesai diskusi harus dalam rentang waktu session.'])->withInput();
+        }
+
+        // Validasi 3: start_discussion_time harus < end_discussion_time
+        if ($startDiscussionTime && $endDiscussionTime && $startDiscussionTime >= $endDiscussionTime) {
+            Alert::error('Error', 'Waktu mulai diskusi harus sebelum waktu selesai diskusi.');
+            return back()->withErrors(['start_discussion_time' => 'Waktu mulai diskusi harus sebelum waktu selesai diskusi.'])->withInput();
+        }
         Session::create([
             'name' => $request->name,
             'description' => $request->description ?? null,
@@ -134,6 +156,27 @@ class SessionController extends Controller
         $startDiscussionTime = $request->start_discussion_time ? Carbon::parse($request->start_discussion_time)->format('H:i') : null;
         $endDiscussionTime = $request->end_discussion_time ? Carbon::parse($request->end_discussion_time)->format('H:i') : null;
 
+        if ($startTime >= $endTime) {
+            Alert::error('Error', 'Waktu mulai session harus sebelum waktu selesai.');
+            return back()->withErrors(['start_time' => 'Waktu mulai session harus sebelum waktu selesai.'])->withInput();
+        }
+
+        // Validasi 2: Waktu diskusi (jika ada) harus dalam rentang session
+        if ($startDiscussionTime && ($startDiscussionTime < $startTime || $startDiscussionTime > $endTime)) {
+            Alert::error('Error', 'Waktu mulai diskusi harus dalam rentang waktu session.');
+            return back()->withErrors(['start_discussion_time' => 'Waktu mulai diskusi harus dalam rentang waktu session.'])->withInput();
+        }
+
+        if ($endDiscussionTime && ($endDiscussionTime < $startTime || $endDiscussionTime > $endTime)) {
+            Alert::error('Error', 'Waktu selesai diskusi harus dalam rentang waktu session.');
+            return back()->withErrors(['end_discussion_time' => 'Waktu selesai diskusi harus dalam rentang waktu session.'])->withInput();
+        }
+
+        // Validasi 3: start_discussion_time harus < end_discussion_time
+        if ($startDiscussionTime && $endDiscussionTime && $startDiscussionTime >= $endDiscussionTime) {
+            Alert::error('Error', 'Waktu mulai diskusi harus sebelum waktu selesai diskusi.');
+            return back()->withErrors(['start_discussion_time' => 'Waktu mulai diskusi harus sebelum waktu selesai diskusi.'])->withInput();
+        }
         $session->update([
             'name' => $request->name,
             'description' => $request->description ?? null,

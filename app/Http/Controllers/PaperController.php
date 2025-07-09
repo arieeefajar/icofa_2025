@@ -58,6 +58,19 @@ class PaperController extends Controller
                 ->withErrors($validation)
                 ->withInput();
         }
+
+        $session = Session::findOrFail($request->session_id);
+
+        // Validasi waktu presentasi harus dalam rentang waktu sesi
+        if ($request->start_time < $session->start_time) {
+            Alert::error('Error', 'Waktu mulai presentasi tidak boleh lebih awal dari sesi.');
+            return back()->withErrors(['start_time' => 'Waktu mulai presentasi tidak boleh lebih awal dari sesi.'])->withInput();
+        }
+
+        if ($request->end_time > $session->end_time) {
+            Alert::error('Error', 'Waktu akhir presentasi tidak boleh melebihi waktu sesi.');
+            return back()->withErrors(['end_time' => 'Waktu akhir presentasi tidak boleh melebihi waktu sesi.'])->withInput();
+        }
         $startTime = Carbon::createFromFormat('H:i', $request->start_time);
         $endTime = Carbon::createFromFormat('H:i', $request->end_time);
 

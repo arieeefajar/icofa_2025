@@ -5,7 +5,18 @@
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             <!-- Menu -->
+            <style>
+                .flatpickr-input {
+                    background-color: white !important;
+                    color: black !important;
+                }
 
+                input[type="time"],
+                input[type="text"].timepicker {
+                    background-color: white;
+                    color: black;
+                }
+            </style>
             @include('admin.partial.sidebar')
             <!-- / Menu -->
 
@@ -148,6 +159,11 @@
     @include('admin.partial.footer')
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     <script>
         function logout() {

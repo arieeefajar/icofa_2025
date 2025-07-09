@@ -102,7 +102,14 @@
                  <i class="menu-icon tf-icons bx bx-file"></i>
                  <div data-i18n="Tables">Paper</div>
              </a>
-             <!-- Misc -->
+         </li>
+         <li class="menu-item {{ Route::is('admin_publish_papers.*') ? 'active' : '' }}">
+             <a href="{{ route('admin_publish_papers.index') }}" class="menu-link">
+                 <i class="menu-icon tf-icons bx bx-file"></i>
+                 <div data-i18n="Tables">Atur Link Upload dan Download Template</div>
+             </a>
+         </li>
+         <!-- Misc -->
 
 
      </ul>
