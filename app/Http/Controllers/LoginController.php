@@ -41,7 +41,7 @@ class LoginController extends Controller
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
                 Alert::success('Success', 'Login Berhasil di lakukan')->flash();
-                return redirect()->route('atur_home');
+                return redirect()->route('panels.index');
             } else {
                 Alert::error('Gagal', "email atau password salah");
                 return back();
