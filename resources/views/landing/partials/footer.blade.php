@@ -56,7 +56,7 @@
                     <strong>Office Address :</strong>Jl. Mastrip Po Box 164 Jember, East Java, Indonesia<br>
                     <strong>Phone :</strong>+62 331 333533<br>
                     <strong>Website :</strong> <a
-                        href="https://conference.polije.ac.id/icofa/2024/">https://conference.polije.ac.id/icofa/2024/</a><br>
+                        href="https://conference.polije.ac.id/icofa/2025/">https://conference.polije.ac.id/icofa/2025/</a><br>
                     <strong>Email :</strong> <a href="mailto:icofa@polije.ac.id">icofa@polije.ac.id</a><br>
                 </p>
                 <h4>Contact Person</h4>

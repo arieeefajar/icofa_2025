@@ -135,8 +135,8 @@
                 <div class="col-lg-5 about-images text-center d-block" data-aos="fade-up" data-aos-delay="200">
                     <img src="{{ asset('assets/img/speakers/no-profile-1.jpg') }}" height="500px" alt="">
                     <div class="chairman text-white text-center border rounded p-3 bg-main">
-                        <h4 class="name m-0">Arie Fajar Bachtiar A.Md.Kom</h4>
-                        <p class="position m-0">Head of Organizing Committee</p>
+                        <h4 class="name m-0">XXX</h4>
+                        <p class="position m-0">Chairman of Organizing Committee</p>
                     </div>
                 </div>
 
@@ -276,9 +276,9 @@
                                 alt="">
                         </div>
                         <div class="member-info">
-                            <h4 class="text-center">Prof. Benjamin C. McLellan</h4>
+                            <h4 class="text-center">XXX</h4>
                             <p align="center"></p>
-                            <span class="text-center">Graduate School of Energy Science, Kyoto University, Japan</span>
+                            <span class="text-center">XXX</span>
                         </div>
                     </div>
                 </div><!-- End Team Member -->
@@ -290,10 +290,9 @@
                                 alt="">
                         </div>
                         <div class="member-info">
-                            <h4 class="text-center">Dr. Sumeth Piayura</h4>
+                            <h4 class="text-center">XXX</h4>
                             <p align="center"></p>
-                            <span class="text-center">Department of Food Technology, Sakon Nakhon Rajabhat University,
-                                Thailand</span>
+                            <span class="text-center">XXX</span>
                         </div>
                     </div>
                 </div><!-- End Team Member -->
@@ -305,10 +304,9 @@
                                 alt="">
                         </div>
                         <div class="member-info">
-                            <h4 class="text-center">Prof. Dr. Ir. Titi Candra Sunarti, M.Si.</h4>
+                            <h4 class="text-center">XXX</h4>
                             <p align="center"></p>
-                            <span class="text-center">Department of Agro-Industrial Technology Institut Pertanian Bogor,
-                                Indonesia<br></span>
+                            <span class="text-center">XXX<br></span>
                         </div>
                     </div>
                 </div><!-- End Team Member -->
