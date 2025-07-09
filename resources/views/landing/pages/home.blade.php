@@ -8,7 +8,7 @@
         </div>
         <div class="container text-center">
             <div class="d-flex flex-column justify-content-center align-items-center">
-                <img src="{{ asset('assets/img/icofa_7th_logo.svg') }}" alt="" class="hero-img mb-3"
+                <img src="{{ asset('assets/img/icofa_8th_logo.png') }}" alt="" class="hero-img mb-3"
                     data-aos="fade-up">
                 <h2 data-aos="fade-up" data-aos-delay="100" class="aos-init">Politeknik Negeri Jember</h2>
                 <p data-aos="fade-up" data-aos-delay="150" class="bg-dark px-3 text-white aos-init">8th

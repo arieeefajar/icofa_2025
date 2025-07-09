@@ -4,7 +4,7 @@
 
         <a href="/" class="logo d-flex align-items-center me-auto">
             <img src="{{ asset('assets/img/polije_blu.svg') }}" alt="" height="40px">
-            <img src="{{ asset('assets/img/icofa_7th_logo_alt.svg') }}" alt="" height="40px">
+            <img src="{{ asset('assets/img/icofa_8th_logo_alt.png') }}" alt="" height="40px">
         </a>
 
         <nav id="navmenu" class="navmenu">

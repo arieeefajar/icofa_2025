@@ -21,8 +21,8 @@
     @endif --}}
 
     <!-- Favicons -->
-    <link rel="icon" href="{{ asset('assets/img/icofa_7th_icon.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('assets/img/icofa_7th_icon.png') }}">
+    <link rel="icon" href="{{ asset('assets/img/icofa_8th_icon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('assets/img/icofa_8th_icon.png') }}">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">

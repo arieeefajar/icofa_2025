@@ -24,7 +24,7 @@
             <div class="col-lg-6 col-md-12 footer-about">
                 <h3 class="fw-bold">About </h3>
                 <a href="/" class="logo align-items-center">
-                    <img src="{{ asset('assets/img/icofa_7th_logo_alt.svg') }}" alt="" width="60%">
+                    <img src="{{ asset('assets/img/icofa_8th_logo_alt.png') }}" alt="" width="60%">
                 </a>
                 <div class="footer-contact pt-3">
                     <p>Politeknik Negeri Jember Indonesia will hold scientific conference, entitled The 8th
