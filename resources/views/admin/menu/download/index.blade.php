@@ -27,7 +27,7 @@
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $download->keterangan }}</td>
-                            <td><a href="{{ $download->link_download }}" target="_blank" class="btn btn-dark">Download</a>
+                            <td><a href="{{ $download->link_download }}" target="_blank">{{ $download->link_download }}</a>
                             </td>
                             <td>
                                 <button class="btn btn-warning" onclick="editDownload({{ $download }})"
@@ -113,14 +113,9 @@
             document.getElementById('keterangan').value = data.keterangan;
             document.getElementById('link_download').value = data.link_download;
             document.getElementById('download_id').value = data.id;
-
-
         }
 
-
         function deleteDownload(id) {
-
-
             Swal.fire({
                 title: 'Apakah Anda yakin?',
                 text: "Data ini akan dihapus!",

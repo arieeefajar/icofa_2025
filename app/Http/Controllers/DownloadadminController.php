@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Download;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class DownloadadminController extends Controller
@@ -18,43 +19,63 @@ class DownloadadminController extends Controller
 
     public function store(Request $request)
     {
-
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'keterangan' => 'required|string|max:255',
             'link_download' => 'required|url',
         ]);
 
-        $download = new Download();
-        $download->keterangan = $request->keterangan;
-        $download->link_download = $request->link_download;
-        $download->save();
-        Alert::success('Berhasil', 'Data berhasil ditambahkan.');
+        if ($validator->fails()) {
+            Alert::error('Error', $validator->errors()->first());
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
-        return redirect()->route('admin_download.index');
+        try {
+            $download = new Download();
+            $download->keterangan = $request->keterangan;
+            $download->link_download = $request->link_download;
+            $download->save();
+            Alert::success('Berhasil', 'Data berhasil ditambahkan.');
+            return redirect()->route('admin_download.index');
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Data gagal ditambahkan.');
+            return redirect()->route('admin_download.index');
+        }
     }
 
     public function update(Request $request)
     {
-        // dump($request->all());
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'keterangan' => 'required|string|max:255',
             'link_download' => 'required|url',
         ]);
 
-        $download = Download::findOrFail($request->download_id);
-        $download->keterangan = $request->keterangan;
-        $download->link_download = $request->link_download;
-        $download->save();
-        Alert::success('Berhasil', 'Data berhasil diubah.');
+        if ($validator->fails()) {
+            Alert::error('Error', $validator->errors()->first());
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
-        return redirect()->route('admin_download.index');
+        try {
+            $download = Download::findOrFail($request->download_id);
+            $download->keterangan = $request->keterangan;
+            $download->link_download = $request->link_download;
+            $download->save();
+            Alert::success('Berhasil', 'Data berhasil diubah.');
+            return redirect()->route('admin_download.index');
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Data gagal diubah.');
+            return redirect()->route('admin_download.index');
+        }
     }
     public function destroy($id)
     {
-        $download = Download::findOrFail($id);
-        $download->delete();
-        Alert::success('Berhasil', 'Data berhasil dihapus.');
-
-        return redirect()->route('admin_download.index');
+        try {
+            $download = Download::findOrFail($id);
+            $download->delete();
+            Alert::success('Berhasil', 'Data berhasil dihapus.');
+            return redirect()->route('admin_download.index');
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Data gagal dihapus.');
+            return redirect()->route('admin_download.index');
+        }
     }
 }
