@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Download;
 use App\Models\Panel;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,7 @@ class LandingController extends Controller
 
     public function download()
     {
-        return view('landing.pages.download');
+        $download = Download::all();
+        return view('landing.pages.download', compact('download'));
     }
 }

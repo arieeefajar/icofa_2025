@@ -9,7 +9,8 @@
 
         <nav id="navmenu" class="navmenu">
             <ul>
-                <li><a href="./#callforpaper" target="_self" class="active">Call for Papers</a></li>
+                <li><a href="./#callforpaper" target="_self" class="">Call
+                        for Papers</a></li>
                 <li><a href="./#speaker" target="_self" class="">Speakers</a></li>
                 <li class="dropdown"><a href=""><span>Committee</span> <i
                             class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -51,7 +52,8 @@
 
                     </ul>
                 </li>
-                <li><a href="download" target="_self">Download</a></li>
+                <li><a href="{{ route('landing.download') }}" target="_self"
+                        class="{{ request()->routeIs('landing.download') ? 'active' : '' }}">Download</a></li>
                 <li><a href="#contact" target="_self" class="">Contact</a></li>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
