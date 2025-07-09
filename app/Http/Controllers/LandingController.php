@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Panel;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -13,6 +14,7 @@ class LandingController extends Controller
 
     public function presentationSchedule()
     {
-        return view('landing.pages.presentation-schedule');
+        $presentationSchedule = Panel::with('sessions.papers')->get();
+        return view('landing.pages.presentation-schedule', compact('presentationSchedule'));
     }
 }

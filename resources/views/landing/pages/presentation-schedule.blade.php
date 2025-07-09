@@ -29,7 +29,7 @@
         <div class="container aos-init" data-aos="fade-up">
             <div class="row">
                 <div class="col-lg-12">
-                    <nav>
+                    {{-- <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <button class="h6 fw-bold nav-link active" id="panel1" data-bs-toggle="tab"
                                 data-bs-target="#nav-panel1" type="button" role="tab" aria-controls="nav-panel1"
@@ -50,8 +50,18 @@
                                 data-bs-target="#nav-panel6" type="button" role="tab" aria-controls="nav-panel6"
                                 aria-selected="false" tabindex="-1">Panel 6</button>
                         </div>
+                    </nav> --}}
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            @foreach ($presentationSchedule as $index => $schedule)
+                                <button class="h6 fw-bold nav-link active" id="panel{{ $index }}"
+                                    data-bs-toggle="tab" data-bs-target="#nav-panel{{ $index }}" type="button"
+                                    role="tab" aria-controls="nav-panel{{ $index }}" aria-selected="true">Panel
+                                    1</button>
+                            @endforeach
+                        </div>
                     </nav>
-                    <div class="tab-content" id="nav-tabContent">
+                    {{-- <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-panel1" role="tabpanel"
                             aria-labelledby="nav-panel1-tab">
 
@@ -2011,6 +2021,107 @@
                                 </div>
                             </div>
                         </div>
+                    </div> --}}
+                    <div class="tab-content" id="nav-tabContent">
+                        @foreach ($presentationSchedule as $index => $schedule)
+                            <div class="tab-pane fade show active" id="nav-panel{{ $index }}" role="tabpanel"
+                                aria-labelledby="nav-panel1-tab">
+
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-12 p-3 my-3 bg-light">
+                                        <table class="table table-borderless h6 mb-0">
+                                            <tbody>
+                                                <tr>
+                                                    <th width="10%">Panel Name :</th>
+                                                    <td width="40%">{{ $schedule->name }}</td>
+                                                    <th>Room Name :</th>
+                                                    <td>{{ $schedule->room }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">Moderator :</th>
+                                                    <td>
+                                                        <ol class="ps-3 mb-0">
+                                                            @foreach ($schedule->moderators as $moderator)
+                                                                <li>{{ $moderator }}</li>
+                                                            @endforeach
+                                                        </ol>
+                                                    </td>
+                                                    <th>Timezone :</th>
+                                                    <td>{{ $schedule->time_zone }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-lg-12 p-0">
+                                        @foreach ($schedule->sessions as $session)
+                                            <div class="card mb-3">
+                                                <div class="card-header bg-main">
+                                                    <h5 class="card-title fw-bold text-white mb-0">{{ $session->name }}
+                                                        @php
+                                                            $date = \Carbon\Carbon::parse(
+                                                                $session->session_date,
+                                                            )->translatedFormat('F d, Y');
+                                                            $start = \Carbon\Carbon::parse(
+                                                                $session->start_time,
+                                                            )->format('H.i');
+                                                            $end = \Carbon\Carbon::parse($session->end_time)->format(
+                                                                'H.i',
+                                                            );
+                                                            $disStart = \Carbon\Carbon::parse(
+                                                                $session->start_discussion_time,
+                                                            )->format('H.i');
+                                                            $disEnd = \Carbon\Carbon::parse(
+                                                                $session->end_discussion_time,
+                                                            )->format('H.i');
+                                                        @endphp
+                                                        <span class="small fw-normal float-end">{{ $date }}
+                                                            ({{ $start }} -
+                                                            {{ $end }}
+                                                            WIB)
+                                                        </span>
+                                                    </h5>
+                                                </div>
+                                                <div class="card-body p-0">
+                                                    <table class="table table-striped mb-0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th width="10%">Paper ID</th>
+                                                                <th width="35%">Author</th>
+                                                                <th>Title</th>
+                                                                <th width="10%">Time</th>
+                                                            </tr>
+                                                            @foreach ($session->papers as $paper)
+                                                                <tr>
+                                                                    <td align="center">{{ $paper->id }}</td>
+                                                                    <td>{{ $paper->authors }}</td>
+                                                                    <td>{{ $paper->title }}
+                                                                    </td>
+                                                                    @php
+                                                                        $start = \Carbon\Carbon::parse(
+                                                                            $paper->start_time,
+                                                                        )->format('H.i');
+                                                                        $end = \Carbon\Carbon::parse(
+                                                                            $paper->end_time,
+                                                                        )->format('H.i');
+                                                                    @endphp
+                                                                    <td>{{ $start }} - {{ $end }}</td>
+                                                                </tr>
+                                                            @endforeach
+                                                            <tr class="bg-dark">
+                                                                <td class="fw-bold text-dark h6" colspan="3">Discussion
+                                                                </td>
+                                                                <td class="text-dark">{{ $disStart }} -
+                                                                    {{ $disEnd }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
